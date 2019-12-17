@@ -4,7 +4,6 @@ import java.util.Set;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Tag;
-import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -33,10 +32,6 @@ public class CB extends JavaPlugin implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     private void onBlockFade(BlockFadeEvent e) {
-        Block b = e.getBlock();
-        if (b.hasMetadata(k)) {
-            b.removeMetadata(k, this);
-            e.setCancelled(true);
-        }
+        if (e.getBlock().hasMetadata(k)) e.setCancelled(true);
     }
 }
