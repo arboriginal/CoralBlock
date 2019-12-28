@@ -7,3 +7,8 @@ dev-url: https://github.com/arboriginal/${project.artifactId}
 
 main: ${project.groupId}.${project.artifactId}.${spigot-main}
 api-version: ${spigot-api}
+
+permissions:
+  coral.place:
+    description: Allows to place coral blocks which will not decay.
+    default: true

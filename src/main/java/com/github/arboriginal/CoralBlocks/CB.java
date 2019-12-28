@@ -5,6 +5,7 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -40,7 +41,9 @@ public class CB extends JavaPlugin implements Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     private void onBlockPlace(BlockPlaceEvent e) {
-        if (c.contains(e.getBlock().getType()) && e.getPlayer().isSneaking()) e.getBlock().setMetadata(k, f);
+        Block  b = e.getBlock();
+        Player p = e.getPlayer();
+        if (p.isSneaking() && c.contains(b.getType()) && p.hasPermission("coral.place")) b.setMetadata(k, f);
     }
 
     @EventHandler(ignoreCancelled = true)
